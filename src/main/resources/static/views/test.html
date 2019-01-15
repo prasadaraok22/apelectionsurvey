@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+		$scope.names = [ "Emil", "Tobias", "Linus" ];
+	});
+	
+	app.controller('myCtrl2', function($scope, $http) {
+	    $http.get("/api/districts")
+	    .then(function(response) {
+	        $scope.distlist = response.data;
+	    });
+	    
+	    $scope.assemblyConstituency = function(selectedDistrict) {
+	    	alert( $scope.selectedDistrict);
+	    	$http.get("/api/assemblyconstituencies?stateID=S01&districtCode=" + selectedDistrict)
+		    .then(function(response) {
+		        $scope.aclist = response.data;
+		    });
+	    };
+	});
+	
+</script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="myCtrl">
+			<select ng-model="selectedName" ng-options="x for x in names">		</select>
+		</div>
+		
+		<br>
+		<div ng-controller="myCtrl2">
+			<select ng-change="assemblyConstituency(selectedDistrict)" ng-model="selectedDistrict" class="ng-pristine ng-valid" ng-options="t.districtCode as t.districtName for t in distlist | orderBy:'districtName'" title="Select district ">		
+			</select>
+		
+		<br>
+		
+			<select ng-model="selectedAssemblyConstituency" ng-options="constituencyCode as t.constituencyName for t in aclist | orderBy:'constituencyName'">		</select>
+		</div>
+	</div>
+</body>
+</html>
