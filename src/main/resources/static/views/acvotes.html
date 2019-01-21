@@ -18,6 +18,7 @@
 				<hr>
 				<div ng-controller="myCtrl2">
 					<div ng-show="isResult">Your poll successfully saved!!!</div>
+					<div ng-show="isVoteDoneAlready">Your vote is already captured successfully. Please close browser and try again!!!!</div>
 					<select ng-change="assemblyConstituency(selectedDistrict)" ng-model="selectedDistrict" class="ng-pristine ng-valid" 
 					ng-options="t.districtCode as t.districtName for t in distlist | orderBy:'districtName'" title="Select district ">		
 					</select>

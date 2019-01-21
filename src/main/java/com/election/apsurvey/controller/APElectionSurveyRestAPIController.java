@@ -5,7 +5,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.election.apsurvey.entity.AssemblyConstituency;
 import com.election.apsurvey.entity.AssemblyConstituencyVotes;
+import com.election.apsurvey.entity.AssemblyConstituencyVotesResults;
 import com.election.apsurvey.entity.District;
 import com.election.apsurvey.entity.PartyVotes;
-import com.election.apsurvey.service.APSurveyService;	
+import com.election.apsurvey.service.APSurveyService;
+import com.election.apsurvey.utils.APElectionSurveyUtils;	
 
 @RestController
 @RequestMapping(path = "/api")
@@ -58,12 +62,23 @@ public class APElectionSurveyRestAPIController {
     }
 
 	@RequestMapping(value = "/assemblyconstituencyvote", method = RequestMethod.POST, produces= {"text/plain", "application/json"}, consumes="application/json")
-	public String voteForAssemblyConstituency(@RequestBody AssemblyConstituencyVotes acVotes)
+	public String voteForAssemblyConstituency(@RequestBody AssemblyConstituencyVotes acVotes, HttpServletRequest request)
     {
 		logger.info("voteForAssemblyConstituency: " + acVotes);
 		
-		apSurveyService.voteForAssemblyConstituency(acVotes);
-        return "Success";
+		HttpSession session = request.getSession(false);
+		if(null != session) {
+			String votesFlag = (String)session.getAttribute(APElectionSurveyUtils.ASSEMBLYCONSTITUENCYVOTESSESSIONFLAG);
+			if("TRUE".equals(votesFlag)) {
+				return "DoneAlready";
+			}else {
+				apSurveyService.voteForAssemblyConstituency(acVotes);
+				session.setAttribute(APElectionSurveyUtils.ASSEMBLYCONSTITUENCYVOTESSESSIONFLAG, "TRUE");
+				return "Success";
+			}
+		}
+		
+		return "LoadVotesPage";
     }
 	
 	@RequestMapping(value = "/voteforparty", method = RequestMethod.POST, produces= {"text/plain", "application/json"}, consumes="application/json")
@@ -81,5 +96,15 @@ public class APElectionSurveyRestAPIController {
 		
         return "Success";
     }
+	
+	@RequestMapping(value = "/assemblyconstituencyvote", method = RequestMethod.GET)
+	public @ResponseBody List<Object[]> getAssemblyConstituenciesVotesResults()
+    {
+		logger.info("getAssemblyConstituenciesVotesResults!!!!!!!!");
+		
+		List<Object[]> results = apSurveyService.getAssemblyConstituenciesVotesResults("S01");
+        return results;
+    }
+	
 	
 }

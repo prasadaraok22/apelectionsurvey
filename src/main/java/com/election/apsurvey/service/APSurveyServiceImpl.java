@@ -28,7 +28,7 @@ public class APSurveyServiceImpl implements APSurveyService {
 	
 	@Autowired
 	PartyVotesRepository partyVotesRepository ;
-
+	
 	@Override
 	public List<District> getDistricts() {
 	
@@ -58,6 +58,13 @@ public class APSurveyServiceImpl implements APSurveyService {
 	@Override
 	public void voteForParty(PartyVotes partyVotes) {
 		partyVotesRepository.save(partyVotes);
+	}
+
+	@Override
+	public List<Object[]> getAssemblyConstituenciesVotesResults(String stateID) {
+		List<Object[]> results= assemblyConstituencyVotesRepository.findVotesResults(stateID);
+		
+		return results;
 	}
 
 }

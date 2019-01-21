@@ -9,27 +9,27 @@
 </head>
 <body>
 
-		<form class="modal-content">
+		<form class="modal-content" ng-app="myApp">
 			<div class="container">
 				<h1>Andhra Pradesh Assembly Election 2019 Survey</h1>
 				
 				<hr>
 				<div ng-controller="myCtrl3">
-					<div ng-show="isResult">Your poll successfully saved!!!</div>				
+					<div ng-show="isResult1">Your poll successfully saved!!!</div>				
 
 					<div class="clearfix">
 						
-						<button type="button" class="signupbtn" ng-disabled="isDisabled" ng-click="voteForParty('JSP')">JSP జనసేన</button>
+						<button type="button" class="signupbtn" ng-disabled="isDisabled1" ng-click="voteForParty('JSP')">JSP జనసేన</button>
 					</div>
 					<div class="clearfix">
 						
-						<button type="button" class="signupbtn" ng-disabled="isDisabled" ng-click="voteForParty('YSR')">YSR CP వైయ‌స్ఆర్‌ కాంగ్రెస్ పార్టీ</button>
+						<button type="button" class="signupbtn" ng-disabled="isDisabled1" ng-click="voteForParty('YSR')">YSR CP వైయ‌స్ఆర్‌ కాంగ్రెస్ పార్టీ</button>
 						
 					</div>
 					
 					<div class="clearfix">
 						
-						<button type="button" class="signupbtn" ng-disabled="isDisabled" ng-click="voteForParty('TDP')">TDP తెదేపా</button>
+						<button type="button" class="signupbtn" ng-disabled="isDisabled1" ng-click="voteForParty('TDP')">TDP తెదేపా</button>
 						
 					</div>
 				</div>
