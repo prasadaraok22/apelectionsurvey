@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.election.apsurvey.entity.AssemblyConstituency;
 import com.election.apsurvey.entity.AssemblyConstituencyVotes;
-import com.election.apsurvey.entity.AssemblyConstituencyVotesResults;
 import com.election.apsurvey.entity.District;
 import com.election.apsurvey.entity.PartyVotes;
 
@@ -20,5 +19,5 @@ public interface APSurveyService {
 	
 	public void voteForParty(PartyVotes partyVotes);
 	
-	public List<Object[]> getAssemblyConstituenciesVotesResults(String stateID);
+	public List<Object[]> getPartyVotesResults(String stateID);
 }

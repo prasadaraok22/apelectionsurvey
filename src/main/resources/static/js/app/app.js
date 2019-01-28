@@ -61,7 +61,7 @@ app.controller('myCtrl2', function($scope, $http) {
             	 $scope.isDisabled = true;
             	 $scope.isVoteDoneAlready = true;
         	 }
-
+             
          })
          .catch(function(response) {
         	 $scope.isDisabled = false;
@@ -72,12 +72,11 @@ app.controller('myCtrl2', function($scope, $http) {
 });
 
 app.controller('myCtrl3', function($scope, $http) {
-	$scope.isResult1 = false;
-	
+    
     $scope.voteForParty = function(partyID) {
     	
     	// Disable buttons quickly after click and enable if there are any failures
-    	$scope.isDisabled1 = true;
+    	$scope.isDisabled = true;
     	$scope.isLoading = true;
     	
     	// Post URL
@@ -98,12 +97,16 @@ app.controller('myCtrl3', function($scope, $http) {
 		// Do posting
     	 $http.post(url, data, config)
          .then(function (response) {
-        	 $scope.isDisabled1 = true;
-        	 $scope.isResult1 = true;
-             $scope.PostDataResponse = response.data;
+        	 if("Success" == response.data) {
+            	 $scope.isDisabled = true;
+            	 $scope.isResult = true;
+        	 }else if("DoneAlready" == response.data){
+            	 $scope.isDisabled = true;
+            	 $scope.isVoteDoneAlready = true;
+        	 }
          })
          .catch(function(response) {
-        	 $scope.isDisabled1 = false;
+        	 $scope.isDisabled = false;
         	 alert('error');
          })
     };

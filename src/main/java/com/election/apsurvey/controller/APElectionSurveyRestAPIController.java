@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.election.apsurvey.entity.AssemblyConstituency;
 import com.election.apsurvey.entity.AssemblyConstituencyVotes;
-import com.election.apsurvey.entity.AssemblyConstituencyVotesResults;
 import com.election.apsurvey.entity.District;
 import com.election.apsurvey.entity.PartyVotes;
 import com.election.apsurvey.service.APSurveyService;
@@ -82,27 +81,33 @@ public class APElectionSurveyRestAPIController {
     }
 	
 	@RequestMapping(value = "/voteforparty", method = RequestMethod.POST, produces= {"text/plain", "application/json"}, consumes="application/json")
-	public String voteForParty(@RequestBody PartyVotes partyVotes, HttpServletResponse response)
+	public String voteForParty(@RequestBody PartyVotes partyVotes, HttpServletRequest request)
     {
 		logger.info("voteForAssemblyConstituency: " + partyVotes);
 		
-		apSurveyService.voteForParty(partyVotes);
+		HttpSession session = request.getSession(false);
 		
-		Cookie acVoteCookie = new Cookie("PartyVoteREST", "true");
-		// acVoteCookie.setMaxAge(60*60);
-		// acVoteCookie.setDomain("example.com");
-		// acVoteCookie.setPath("/welcomeUser");
-		response.addCookie(acVoteCookie);
+		
+		if(null != session) {
+			String votesFlag = (String)session.getAttribute(APElectionSurveyUtils.PARTYVOTESSESSIONFLAG);
+			if("TRUE".equals(votesFlag)) {
+				return "DoneAlready";
+			}else {
+				apSurveyService.voteForParty(partyVotes);
+				session.setAttribute(APElectionSurveyUtils.PARTYVOTESSESSIONFLAG, "TRUE");
+				return "Success";
+			}
+		}
 		
         return "Success";
     }
 	
-	@RequestMapping(value = "/assemblyconstituencyvote", method = RequestMethod.GET)
-	public @ResponseBody List<Object[]> getAssemblyConstituenciesVotesResults()
+	@RequestMapping(value = "/partyvotesresults", method = RequestMethod.GET)
+	public @ResponseBody List<Object[]> getPartyVotesResults()
     {
-		logger.info("getAssemblyConstituenciesVotesResults!!!!!!!!");
+		logger.info("getPartyVotesResults!!!!!!!!");
 		
-		List<Object[]> results = apSurveyService.getAssemblyConstituenciesVotesResults("S01");
+		List<Object[]> results = apSurveyService.getPartyVotesResults("S01");
         return results;
     }
 	
