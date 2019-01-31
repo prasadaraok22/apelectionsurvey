@@ -43,6 +43,12 @@ public class APElectionSurveyController {
 		return "acvotes";
 	}
 	
+	@GetMapping(value = "/acvotesresults")
+	public String acVotesResults(HttpServletRequest request) {
+
+		return "acvotesresults";
+	}
+	
 	@GetMapping(value ="/partyvotes")
 	public String partyVotes(HttpServletRequest request) {
 		return "partyvotes";

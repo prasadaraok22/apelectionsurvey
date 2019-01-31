@@ -13,6 +13,7 @@ var app = angular.module('myApp', []);
 
 app.controller('myCtrl2', function($scope, $http) {
 	$scope.isResult = false;
+	$scope.showACresults = false;
     $http.get("/api/districts")
     .then(function(response) {
         $scope.distlist = response.data;
@@ -23,6 +24,27 @@ app.controller('myCtrl2', function($scope, $http) {
 	    .then(function(response) {
 	    	$scope.aclist = response.data;
 	    });
+    };
+    
+    $scope.assemblyConstituencyVotesResults = function(selectedDistrict) {
+    	
+    	// URL
+		var url = "/api/acvotesresults?districtCode="+selectedDistrict;
+		
+		// Prepare headers for posting
+		
+		// Prepare data for post messages
+    	
+		// Do posting
+   	 	$http.get(url)
+        .then(function (response) {
+        	$scope.records = response.data;
+        	$scope.showACresults = true;
+            
+        })
+        .catch(function(response) {
+       	 	alert('error');
+        })
     };
     
     $scope.loadPage = function(partyID) {
@@ -104,6 +126,38 @@ app.controller('myCtrl3', function($scope, $http) {
             	 $scope.isDisabled = true;
             	 $scope.isVoteDoneAlready = true;
         	 }
+         })
+         .catch(function(response) {
+        	 $scope.isDisabled = false;
+        	 alert('error');
+         })
+    };
+    
+});
+
+app.controller('myCtrl4', function($scope, $http) {
+    
+    $scope.voteForParty = function(districtcode) {
+    	
+    	// URL
+		var url = "/api/acvotesresults";
+		
+		// Prepare headers for posting
+		var config = {
+                headers : {
+                	'Content-Type': 'application/json',
+                    'Accept': 'text/plain'
+                }
+            }
+		
+		// Prepare data for post messages
+    	var data = null;
+    	data = { stateID: 'S01', districtcode: districtcode };
+   
+		// Do posting
+    	 $http.get(url, data, config)
+         .then(function (response) {
+        	 $scope.records = response.data;
          })
          .catch(function(response) {
         	 $scope.isDisabled = false;

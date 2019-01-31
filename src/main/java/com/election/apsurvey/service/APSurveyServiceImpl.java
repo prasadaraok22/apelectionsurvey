@@ -62,9 +62,16 @@ public class APSurveyServiceImpl implements APSurveyService {
 
 	@Override
 	public List<Object[]> getPartyVotesResults(String stateID) {
-		List<Object[]> results= partyVotesRepository.findPartyVotesResults(stateID);
+		List<Object[]> results = partyVotesRepository.findPartyVotesResults(stateID);
 		
 		return results;
 	}
 
+	@Override
+	public List<Object[]> getAssemblyConstituenciesVotesResults(String stateID, String districtCode) {
+		List<Object[]> results = assemblyConstituencyVotesRepository.findAssemblyConstituencyVotesResults(stateID, districtCode);
+		
+		return results;
+	}
+	
 }
