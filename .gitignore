@@ -22,3 +22,20 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /target/
+src/.idea/modules.xml
+.classpath
+.settings/org.eclipse.m2e.core.prefs
+src/main/resources/static/.idea/static.iml
+src/main/resources/.idea/resources.iml
+src/main/resources/static/.idea/workspace.xml
+src/main/webapp/WEB-INF/jsp/.idea/modules.xml
+src/main/webapp/WEB-INF/jsp/.idea/workspace.xml
+src/main/resources/static/.idea/modules.xml
+src/main/resources/.idea/workspace.xml
+src/main/resources/.idea/modules.xml
+src/.idea/workspace.xml
+src/.idea/src.iml
+.settings/org.eclipse.core.resources.prefs
+.project
+.settings/org.eclipse.jdt.core.prefs
+src/main/webapp/WEB-INF/jsp/.idea/views.iml

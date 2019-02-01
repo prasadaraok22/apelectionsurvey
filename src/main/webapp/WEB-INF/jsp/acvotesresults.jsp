@@ -73,8 +73,8 @@
 										<tr>
 											<th>Constituency</th>
 											<th>JSP</th>
-											<th>YSRCP</th>
 											<th>TDP</th>
+											<th>YSRCP</th>
 											<th>Lead</th>
 										</tr>
 									</thead>
