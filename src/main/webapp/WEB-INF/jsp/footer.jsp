@@ -1,15 +1,17 @@
-	<footer class="footer">
-		<div class="container">
-			<div class="row bort">
+<footer class="footer">
+	<div class="container" ng-controller="myFooterCtrl">
 
-				<div class="copyright">
-					© Copyright Maundy Theme. All rights reserved.
-					<div class="credits">
-						
-						Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-					</div>
+		<div>Total Party Votes: {{totalpartyvotes}}</div>
+		<div>Total Assembly Votes: {{totalacvotes}}</div>
+		<div class="row bort">
+
+			<div class="copyright">
+				<div class="credits">
+
+					Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
 				</div>
-
 			</div>
+
 		</div>
-	</footer>
+	</div>
+</footer>

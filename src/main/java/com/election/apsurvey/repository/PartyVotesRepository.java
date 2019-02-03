@@ -15,4 +15,7 @@ public interface PartyVotesRepository extends JpaRepository<PartyVotes, Integer>
 	@Query(nativeQuery = true, value = "SELECT COUNT(*) AS partyTotalVotes, partyid AS partyID FROM partyvotes WHERE stateid= 'S01' GROUP BY partyid ORDER BY partyTotalVotes DESC")
 	public List<Object[]> findPartyVotesResults(String stateID);
 	
+	@Query(nativeQuery = true, value = "SELECT COUNT(*) AS partyTotalVotes FROM partyvotes WHERE stateid= 'S01' ")
+	public List<Object[]> findTotalPartyVotes(String stateID);
+	
 }

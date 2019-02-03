@@ -109,6 +109,16 @@ public class APElectionSurveyRestAPIController {
         return "Success";
     }
 	
+	@RequestMapping(value = "/totalpartyvotes", method = RequestMethod.GET)
+	public @ResponseBody long getTotalPartyVotes()
+    {
+		logger.info("getTotalPartyVotes!!!!!!!!");
+		
+		long totalPartyVotes = apSurveyService.getTotalPartyVotes();
+		
+        return totalPartyVotes;
+    }
+	
 	@RequestMapping(value = "/partyvotesresults", method = RequestMethod.GET)
 	public @ResponseBody List<Object[]> getPartyVotesResults()
     {
@@ -116,6 +126,16 @@ public class APElectionSurveyRestAPIController {
 		
 		List<Object[]> results = apSurveyService.getPartyVotesResults("S01");
         return results;
+    }
+	
+	@RequestMapping(value = "/totalacvotes", method = RequestMethod.GET)
+	public @ResponseBody long getTotalACVotes()
+    {
+		logger.info("getTotalACVotes!!!!!!!!");
+		
+		long totalPartyVotes = apSurveyService.getTotalACVotes();
+		
+        return totalPartyVotes;
     }
 	
 	@RequestMapping(value = "/acvotesresults", method = RequestMethod.GET)

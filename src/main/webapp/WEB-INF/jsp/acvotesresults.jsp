@@ -5,7 +5,7 @@
 
 <%@ include file="header.jsp"%>
 
-<body>
+<body ng-app="myApp">
 	<%@ include file="menu.jsp"%>
 
 	<br>
@@ -18,7 +18,7 @@
 						<div class="col-md-10 col-md-offset-1">
 							
 							<div id="errormessage"></div>
-							<form class="contactForm" ng-app="myApp" ng-controller="myCtrl2">
+							<form class="contactForm" ng-controller="myCtrl2">
 
 								<div class="form-group">
 									<select ng-change="assemblyConstituencyVotesResults(selectedDistrict)"

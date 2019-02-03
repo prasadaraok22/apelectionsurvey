@@ -19,7 +19,13 @@ public interface APSurveyService {
 	
 	public void voteForParty(PartyVotes partyVotes);
 	
+	public long getTotalPartyVotes();
+	
+	public List<Object[]> getTotalPartyVotes(String stateID);
+	
 	public List<Object[]> getPartyVotesResults(String stateID);
+	
+	public long getTotalACVotes();
 	
 	public List<Object[]> getAssemblyConstituenciesVotesResults(String stateID, String districtCode);
 }

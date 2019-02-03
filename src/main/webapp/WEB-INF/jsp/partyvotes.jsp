@@ -4,7 +4,7 @@
 
 <%@ include file = "header.jsp" %>
 
-<body>
+<body ng-app="myApp">
 	<%@ include file = "menu.jsp" %>
 	
 	<br>
@@ -19,7 +19,7 @@
 							<div id="sendmessage">Your message has been sent. Thank
 								you!</div>
 							<div id="errormessage"></div>
-							<form class="contactForm" ng-app="myApp" ng-controller="myCtrl3">
+							<form class="contactForm" ng-controller="myCtrl3">
 
 								<div ng-show="isResult">
 									Your poll successfully saved!!! <br></br>

@@ -6,7 +6,7 @@
 
 <%@ include file="header.jsp"%>
 
-<body>
+<body ng-app="myApp">
 	<%@ include file="menu.jsp"%>
 
 	<br>

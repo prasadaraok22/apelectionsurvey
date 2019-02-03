@@ -14,9 +14,9 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl2', function($scope, $http) {
 	$scope.isResult = false;
 	$scope.showACresults = false;
-    $http.get("/api/districts")
-    .then(function(response) {
         $scope.distlist = response.data;
+        $http.get("/api/districts")
+        .then(function(response) {
     });
     
     $scope.assemblyConstituency = function(selectedDistrict) {
@@ -133,6 +133,20 @@ app.controller('myCtrl3', function($scope, $http) {
          })
     };
     
+});
+
+app.controller('myFooterCtrl', function($scope, $http) {
+
+	$http.get("/api/totalpartyvotes")
+    .then(function(response) {
+        $scope.totalpartyvotes = response.data;
+    });
+	
+	$http.get("/api/totalacvotes")
+    .then(function(response) {
+        $scope.totalacvotes = response.data;
+    });
+	
 });
 
 app.controller('myCtrl4', function($scope, $http) {

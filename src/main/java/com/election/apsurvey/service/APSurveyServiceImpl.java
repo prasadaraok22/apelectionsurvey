@@ -59,6 +59,27 @@ public class APSurveyServiceImpl implements APSurveyService {
 	public void voteForParty(PartyVotes partyVotes) {
 		partyVotesRepository.save(partyVotes);
 	}
+	
+	@Override
+	public List<Object[]> getTotalPartyVotes(String stateID) {
+		List<Object[]> results = partyVotesRepository.findTotalPartyVotes(stateID);
+		
+		return results;
+	}
+	
+	@Override
+	public long getTotalPartyVotes() {
+		long results = partyVotesRepository.count();
+		
+		return results;
+	}
+	
+	@Override
+	public long getTotalACVotes() {
+		long results = assemblyConstituencyVotesRepository.count();
+		
+		return results;
+	}
 
 	@Override
 	public List<Object[]> getPartyVotesResults(String stateID) {
