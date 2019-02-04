@@ -14,9 +14,10 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl2', function($scope, $http) {
 	$scope.isResult = false;
 	$scope.showACresults = false;
-        $scope.distlist = response.data;
-        $http.get("/api/districts")
+    
+    $http.get("/api/districts")
         .then(function(response) {
+        	$scope.distlist = response.data;
     });
     
     $scope.assemblyConstituency = function(selectedDistrict) {

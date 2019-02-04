@@ -262,6 +262,14 @@ footer {
     text-align: center;
     background-color: #242830;
 }
+
+.footer span
+{
+	font-family: "Roboto Slab",serif;
+    font-size: 25px;
+    color: #24B7A4;
+}
+
 .footer a
 {
     color: #24B7A4;

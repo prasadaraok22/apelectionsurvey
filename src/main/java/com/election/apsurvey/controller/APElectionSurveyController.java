@@ -45,7 +45,7 @@ public class APElectionSurveyController {
 	
 	@GetMapping(value = "/acvotesresults")
 	public String acVotesResults(HttpServletRequest request) {
-
+		request.setAttribute("displayVotesResults", true);
 		return "acvotesresults";
 	}
 	

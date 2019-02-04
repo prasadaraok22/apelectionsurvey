@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 
@@ -16,9 +17,13 @@
 
 					<div class="contact col-md-6 wow fadeIn delay-08s">
 						<div class="col-md-10 col-md-offset-1">
-							
-							<div id="errormessage"></div>
-							<form class="contactForm" ng-controller="myCtrl2">
+							<c:choose>
+    							<c:when test="${displayVotesResults}">
+        							<div id="404message"> Sorry!!!! <br>
+        							The results will be available on March 31st 2019</div>
+    							</c:when>
+	    						<c:otherwise>
+	        						<form class="contactForm" ng-controller="myCtrl2">
 
 								<div class="form-group">
 									<select ng-change="assemblyConstituencyVotesResults(selectedDistrict)"
@@ -54,6 +59,10 @@
 								</table>
 								</div>
 							</form>
+	    						</c:otherwise>
+							</c:choose>
+							
+							
 						</div>
 					</div>
 				</div>

@@ -1,8 +1,8 @@
 <footer class="footer">
 	<div class="container" ng-controller="myFooterCtrl">
 
-		<div>Total Party Votes: {{totalpartyvotes}}</div>
-		<div>Total Assembly Votes: {{totalacvotes}}</div>
+		<div>Total Votes Party wise: <span>{{totalpartyvotes}}</span></div>
+		<div>Total Votes Assembly Constituency wise: <span>{{totalacvotes}}</span></div>
 		<div class="row bort">
 
 			<div class="copyright">
