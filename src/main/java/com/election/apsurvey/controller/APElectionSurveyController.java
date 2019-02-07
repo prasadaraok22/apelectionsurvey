@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.election.apsurvey.dto.PartyVotesResultsDTO;
-import com.election.apsurvey.service.APSurveyService;	
+import com.election.apsurvey.service.APSurveyService;
+import com.election.apsurvey.utils.APElectionSurveyUtils;
+import com.election.apsurvey.utils.AdminUtils;	
 
 @Controller
 @RequestMapping("/apelections/suvery")
@@ -30,6 +32,9 @@ public class APElectionSurveyController {
 	
 	@Autowired
 	APSurveyService apSurveyService;
+	
+	@Autowired
+	AdminUtils adminUtils;
 	
 	@RequestMapping("/index")
 	String home(ModelMap modal) {
@@ -45,7 +50,7 @@ public class APElectionSurveyController {
 	
 	@GetMapping(value = "/acvotesresults")
 	public String acVotesResults(HttpServletRequest request) {
-		request.setAttribute("displayVotesResults", true);
+		request.setAttribute("displayVotesResults", adminUtils.getValues(APElectionSurveyUtils.ACRESULTS));
 		return "acvotesresults";
 	}
 	
@@ -58,6 +63,15 @@ public class APElectionSurveyController {
 	public String partyVotesResults(Model model, HttpServletRequest request, HttpServletResponse response) {
 		
 		logger.info("partyVotesResults!!!!!!!!");
+		
+		request.setAttribute("displayVotesResults", adminUtils.getValues(APElectionSurveyUtils.PARTYRESULTS));
+		
+		String flag = adminUtils.getValues(APElectionSurveyUtils.PARTYRESULTS);
+		
+		request.setAttribute("displayVotesResults", flag);
+		if("no".equals(flag)) {
+			return "partyvotesresults";
+		}
 		
 		List<Object[]> results = apSurveyService.getPartyVotesResults("S01");
 		

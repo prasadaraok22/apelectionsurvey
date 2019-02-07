@@ -18,8 +18,13 @@
 					<div class="contact col-md-6 wow fadeIn delay-08s">
 						<div class="col-md-10 col-md-offset-1">
 							
-							<div id="errormessage"></div>
-							<form class="contactForm">
+							<c:choose>
+    							<c:when test="${displayVotesResults == 'no'}">
+        							<div id="404message"> Sorry!!!! <br>
+        							The results will be available on March 31st 2019</div>
+    							</c:when>
+	    						<c:otherwise>
+	    							<form class="contactForm">
 
 								<br>
 								<div class="bs-example table-responsive">
@@ -43,6 +48,9 @@
 								</table>
 								</div>
 							</form>
+	    						</c:otherwise>
+							</c:choose>
+							
 						</div>
 					</div>
 				</div>

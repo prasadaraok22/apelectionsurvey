@@ -68,6 +68,28 @@ CREATE TABLE partyvotes (
 );
 
 
+/************************************/;
+/* AdminProperties SQL Table */;
+/************************************/;
+CREATE TABLE adminproperties (
+  id int AUTO_INCREMENT NOT NULL,
+  paramName varchar(50) NOT NULL,
+  paramValue varchar(50) NOT NULL,
+  logtime TIMESTAMP  NOT NULL,
+  PRIMARY KEY (id)
+);
+
+/************************************/;
+/* AdminUser SQL Table */;
+/************************************/;
+CREATE TABLE adminuser (
+  id int AUTO_INCREMENT NOT NULL,
+  username varchar(20) NOT NULL,
+  password varchar(20) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
 insert into District(districtCode,districtName,stateID) values ('12','Anantapur','S01');
 insert into District(districtCode,districtName,stateID) values ('13','Chittoor','S01');
 insert into District(districtCode,districtName,stateID) values ('4','East Godavari','S01');
@@ -81,3 +103,9 @@ insert into District(districtCode,districtName,stateID) values ('1','Srikakulam'
 insert into District(districtCode,districtName,stateID) values ('3','Visakhapatnam','S01');
 insert into District(districtCode,districtName,stateID) values ('2','Vizianagaram','S01');
 insert into District(districtCode,districtName,stateID) values ('5','West Godavari','S01');
+
+insert into adminproperties(paramName,paramValue,logtime) values ('partyResults','yes',CURRENT_TIMESTAMP);
+insert into adminproperties(paramName,paramValue,logtime) values ('acResults','no',CURRENT_TIMESTAMP);
+insert into adminproperties(paramName,paramValue,logtime) values ('emailID','prasadkatak87@gmail.com',CURRENT_TIMESTAMP);
+
+insert into adminuser(username,password) values ('prasad','prasad');
