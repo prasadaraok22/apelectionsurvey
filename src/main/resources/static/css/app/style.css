@@ -184,6 +184,7 @@ table {
 
 .contact-submit {
     background-color: #24B7A4;
+    border-radius:10px;
     border: 2px solid #24B7A4;
     color: #FFFFFF;
     width: 100%;
@@ -236,7 +237,7 @@ table {
 }
 
 .button_jsp:hover{
-     background:  #ad2508 ;
+     background:  #ca231a ;
 }
 .button_ysrcp:hover{
      background: #428bca;
@@ -247,20 +248,26 @@ table {
 
 .bgcolor_JSP{
      background-color:  #ad2508 ;
+     border-radius : 10px;
 }
 .bgcolor_YSRCP{
      background-color: #428bca;
+     border-radius : 10px;
 }
 .bgcolor_TDP{
      background-color:  #FFFF31;
+     border-radius : 10px;
 }
 
 
 footer {
-    padding: 30px;
+    padding: 20px;
     color: #428bca;
     text-align: center;
     background-color: #242830;
+    position:fixed;
+    bottom:0;
+    width:100%;
 }
 
 .footer span

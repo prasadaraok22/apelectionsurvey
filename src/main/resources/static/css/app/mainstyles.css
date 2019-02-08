@@ -26,11 +26,11 @@ body{
 }
 .party-button{
     width: 300px;
-    border-radius: 5px;
+    border-radius: 50px;
     margin: 5px 0;
 }
 .jsp:hover{
-    background-color: darkred;
+    background-color: orange;
 }
 .ysr:hover{
     background-color: royalblue;
@@ -154,6 +154,7 @@ body{
         margin-bottom: 10px;
     }
     #homeButton{
+    
         float: none;
         display: block;
         margin: auto;
