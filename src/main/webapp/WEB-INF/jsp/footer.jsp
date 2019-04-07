@@ -8,7 +8,7 @@
 			<div class="copyright">
 				<div class="credits">
 
-					Developed by <a href="mailto:prasadkatak87@gmail.com">PrasadaraoK</a>
+					Developed by <a href="mailto:prasadkatak87@gmail.com">PK</a>
 				</div>
 			</div>
 

@@ -21,7 +21,7 @@
 							<c:choose>
     							<c:when test="${displayVotesResults == 'no'}">
         							<div id="404message"> Sorry!!!! <br>
-        							The results will be available on March 31st 2019</div>
+        							The results will be available on April 10th 2019</div>
     							</c:when>
 	    						<c:otherwise>
 	    							<form class="contactForm">
